@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums
+enum Role {
+  ADMIN
+  USER
+}
+
+enum DeliveryStatus {
+  PENDING       // A entrega ainda não foi iniciada
+  IN_PROGRESS   // A entrega está em andamento
+  COMPLETED     // A entrega foi concluída
+}
+
+enum DeliveryStop {
+  START         // Ponto de início
+  CHECKPOINT1   // Primeira parada
+  CHECKPOINT2   // Segunda parada
+  END           // Ponto final
+}
+
+// Models
+
+model User {
+  id         Int        @id @default(autoincrement())
+  name       String
+  email      String     @unique
+  password   String
+  role       Role       @default(USER)
+  deliveries Delivery[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model DeliveryPerson {
+  id          Int         @id @default(autoincrement())
+  name        String
+  vehicle     String
+  isBusy      Boolean     @default(false) // Indica se o entregador já está em uma entrega
+  deliveries  Delivery[]  // Um entregador pode realizar muitas entregas
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Delivery {
+  id                 Int              @id @default(autoincrement())
+  
+  // Armazenando cada ponto como uma string "latitude,longitude"
+  startPoint         String
+  checkpoint1        String
+  checkpoint2        String
+  endPoint           String
+
+  status             DeliveryStatus   @default(PENDING)
+  currentStop        DeliveryStop     @default(START)
+
+  // Relacionamento com User: o usuário para quem a entrega é realizada
+  user               User             @relation(fields: [userId], references: [id])
+  userId             Int
+
+  // Relacionamento com DeliveryPerson: o entregador responsável pela entrega
+  deliveryPerson     DeliveryPerson   @relation(fields: [deliveryPersonId], references: [id])
+  deliveryPersonId   Int
+
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+}

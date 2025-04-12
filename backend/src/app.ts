@@ -3,6 +3,7 @@ import { createServer, Server } from 'http';
 import { Server as Io } from 'socket.io';
 import routes from './routes';
 import cors from 'cors';
+import errorMiddleware from './middlewares/errorMiddleware';
 
 
 
@@ -22,19 +23,22 @@ class App {
 
         this.middlewares();
 
-        this.routes();
+        this.app.get('/', (req, res) => {res.json({ ok: true })});
+        this.app.use(routes);
+
     
     }
 
+
     
-        private middlewares() {
+    private middlewares() {
             this.app.use(cors());
             this.app.use(express.json());
-        }
+    }
     
-        private routes() {
-            this.app.use('/', routes);
-        }
+    public start(PORT: string | number): void {
+        this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+      }
     
 }
 

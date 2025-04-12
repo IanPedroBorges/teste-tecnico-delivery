@@ -1,16 +1,14 @@
 import { Router } from 'express';
 
+import usersRoute from './users-route';
+import deliveryPersonRoute from './delivery-person-route';
+import deliveryRoute from './delivery-route';
+
 const router = Router();
 
-// Exemplo de rota GET
-router.get('/', (req, res) => {
-  res.send('Bem-vindo à API!');
-});
+router.use('/users', usersRoute);
+router.use('/delivery-person', deliveryPersonRoute);
+router.use('/delivery', deliveryRoute);
 
-// Exemplo de rota para entregadores
-router.get('/entregadores', (req, res) => {
-  // Aqui você pode chamar um service, acessar o banco, etc.
-  res.json({ message: 'Lista de entregadores' });
-});
 
 export default router;
