@@ -8,11 +8,6 @@ export default class DeliveryController {
     constructor(private deliveryServices = new DeliveryServices()) {};
 
     public async getAllDelivery(req: Request, res: Response): Promise<Response> {
-        const { role } = req.body;
-        if (role !== 'admin') {
-            return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
-        }
-
         const { data, status } = await this.deliveryServices.getAllDelivery();
         return res.status(httpStatus(status)).json(data);
     };
@@ -25,29 +20,31 @@ export default class DeliveryController {
 
     public async createDelivery(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
-        const { data, status } = await this.deliveryServices.createDelivery(req.body);
+        const { delivery } = req.body;
+
+        const { data, status } = await this.deliveryServices.createDelivery(delivery);
         return res.status(httpStatus(status)).json(data);
     };
 
     public async updateCurrentStop(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
         const { id } = req.params;
-        const { currentStop } = req.body;
-        const { data, status } = await this.deliveryServices.updateCurrentStop(Number(id), currentStop);
+        const { stop } = req.body;
+        const { data, status } = await this.deliveryServices.updateCurrentStop(Number(id), stop);
         return res.status(httpStatus(status)).json(data);
     };
 
     public async updateDeliveryStatus(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 

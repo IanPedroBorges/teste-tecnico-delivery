@@ -7,10 +7,6 @@ export default class DeliveryPersonController {
     constructor(private deliveryPersonServices = new DeliveryPersonServices()) {}
 
     public async getAllDeliveryPerson(req: Request, res: Response): Promise<Response> {
-        const { role } = req.body;
-        if (role !== 'admin') {
-            return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
-        }
 
         const { data, status }= await this.deliveryPersonServices.getAllDeliveryPerson();
 
@@ -26,7 +22,7 @@ export default class DeliveryPersonController {
 
     public async createDeliveryPerson(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
@@ -37,7 +33,7 @@ export default class DeliveryPersonController {
 
     public async updateIsBusy(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
@@ -51,7 +47,7 @@ export default class DeliveryPersonController {
 
     public async deleteDeliveryPerson(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 

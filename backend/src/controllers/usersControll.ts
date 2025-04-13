@@ -14,7 +14,7 @@ export default class UsersController {
     }
 
     public async createUser(req: Request, res: Response): Promise<Response> {
-        const { data, status }= await this.usersService.createUser(req.body);
+        const { data, status }= await this.usersService.createUser(req.body.user);
 
         return res.status(httpStatus(status)).json(data);
     }
@@ -22,7 +22,7 @@ export default class UsersController {
     public async getAllUsers(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
 
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
@@ -34,7 +34,7 @@ export default class UsersController {
     public async deleteUser(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
         const { role } = req.body;
-        if (role !== 'admin') {
+        if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
         const { data, status }= await this.usersService.deleteUser(Number(id));
