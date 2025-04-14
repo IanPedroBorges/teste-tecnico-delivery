@@ -56,12 +56,7 @@
   ```bash
   pnpm install
   pnpm run start:all
-</details>
-
----
-
-
-<details> <summary>🛠 Tecnologias Utilizadas</summary> <p> Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇 </p>
+</details> <details> <summary>🛠 Tecnologias Utilizadas</summary> <p> Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇 </p>
 Node.js 🟢
 Usei Node.js no backend pela familiaridade com JavaScript e por ser uma ótima escolha para APIs REST com alto desempenho e boa integração com bancos SQL e bibliotecas modernas.
 
