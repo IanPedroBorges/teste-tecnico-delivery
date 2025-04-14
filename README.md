@@ -56,34 +56,31 @@
   ```bash
   pnpm install
   pnpm run start:all
-
-
-<details>
-  <summary>🛠 Tecnologias Utilizadas</summary>
-
-  <p>
-    Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇
-  </p>
-
-  - **Node.js** 🟢  
-    Usei Node.js no backend pela familiaridade com JavaScript e por ser uma ótima escolha para APIs REST com alto desempenho e boa integração com bancos SQL e bibliotecas modernas.
-
-  - **Prisma** 🔍  
-    Escolhi o Prisma como ORM por sua tipagem forte, simplicidade e por agilizar muito o desenvolvimento com migrations automáticas e um cliente bem intuitivo. Me ajudou bastante na organização do acesso ao banco de dados.
-
-  - **React + Vite** ⚛️⚡  
-    Optei por React por ser uma biblioteca amplamente usada e com ótima comunidade. E usei o Vite no lugar do tradicional Create React App pela sua performance superior e inicialização instantânea — fez diferença no tempo curto que tive.
-
-  - **PostgreSQL** 🐘  
-    Usei PostgreSQL como banco de dados relacional pela robustez e compatibilidade total com Prisma. Também já usei em outros projetos e me sinto confortável com ele.
-
-  - **Docker** 🐳  
-    Utilizei o Docker para isolar o ambiente do banco de dados, facilitando o setup local e garantindo que todos possam rodar o projeto da mesma forma, sem precisar instalar o PostgreSQL diretamente na máquina.
-
-  - **PNPM** 📦  
-    Foi minha **primeira vez usando o PNPM** e gostei bastante! Achei o gerenciamento de pacotes bem mais rápido e eficiente comparado ao NPM, e ajudou a deixar o projeto mais leve e organizado.
-
-  - **Concurrently** ⏯️  
-    Usei o `concurrently` para rodar o backend, frontend e Docker em paralelo com um único comando. Isso facilitou bastante o processo de desenvolvimento e testagem local.
-
 </details>
+
+---
+
+
+<details> <summary>🛠 Tecnologias Utilizadas</summary> <p> Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇 </p>
+Node.js 🟢
+Usei Node.js no backend pela familiaridade com JavaScript e por ser uma ótima escolha para APIs REST com alto desempenho e boa integração com bancos SQL e bibliotecas modernas.
+
+Prisma 🔍
+Escolhi o Prisma como ORM por sua tipagem forte, simplicidade e por agilizar muito o desenvolvimento com migrations automáticas e um cliente bem intuitivo. Me ajudou bastante na organização do acesso ao banco de dados.
+
+React + Vite ⚛️⚡
+Optei por React por ser uma biblioteca amplamente usada e com ótima comunidade. E usei o Vite no lugar do tradicional Create React App pela sua performance superior e inicialização instantânea — fez diferença no tempo curto que tive.
+
+PostgreSQL 🐘
+Usei PostgreSQL como banco de dados relacional pela robustez e compatibilidade total com Prisma. Também já usei em outros projetos e me sinto confortável com ele.
+
+Docker 🐳
+Utilizei o Docker para isolar o ambiente do banco de dados, facilitando o setup local e garantindo que todos possam rodar o projeto da mesma forma, sem precisar instalar o PostgreSQL diretamente na máquina.
+
+PNPM 📦
+Foi minha primeira vez usando o PNPM e gostei bastante! Achei o gerenciamento de pacotes bem mais rápido e eficiente comparado ao NPM, e ajudou a deixar o projeto mais leve e organizado.
+
+Concurrently ⏯️
+Usei o concurrently para rodar o backend, frontend e Docker em paralelo com um único comando. Isso facilitou bastante o processo de desenvolvimento e testagem local.
+
+</details> ```
