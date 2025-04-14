@@ -49,14 +49,30 @@
     npm install -g pnpm
     ```
 
+  
   ### ▶️ Passos para rodar o projeto
 
-  Com os pré-requisitos instalados, siga os passos abaixo:
+  1. **Clone o repositório:**
 
-  ```bash
-  pnpm install
-  pnpm run start:all
-  ```
+    Caso esteja utilizando **SSH**, use o comando abaixo:
+    ```bash
+    git clone git@github.com:IanPedroBorges/teste-tecnico-delivery.git
+    ```
+
+    Caso prefira **HTTPS**, use:
+    ```bash
+    git clone https://github.com/IanPedroBorges/teste-tecnico-delivery.git
+    ```
+
+  2. **Instale as dependências:**
+    ```bash
+    pnpm install
+    ```
+
+  3. **Execute o projeto:**
+    ```bash
+    pnpm run start:all
+    ```
 </details> <details> <summary>🛠 Tecnologias Utilizadas</summary> <p> Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇 </p>
 Node.js 🟢
 Usei Node.js no backend pela familiaridade com JavaScript e por ser uma ótima escolha para APIs REST com alto desempenho e boa integração com bancos SQL e bibliotecas modernas.
