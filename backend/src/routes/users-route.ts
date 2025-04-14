@@ -25,7 +25,7 @@ router.post('/register',
     }
   });
 
-router.get('/',
+router.post('/users',
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       await usersController.getAllUsers(req, res);
@@ -33,6 +33,16 @@ router.get('/',
       next(error);
     }
   });
-  
+
+
+  router.post('delete/:id',
+    async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        await usersController.deleteUser(req, res);
+      } catch (error) {
+        next(error);
+      }
+    }
+  );
 
 export default router;

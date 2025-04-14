@@ -1,7 +1,9 @@
 import axios from "axios";
 import { urlpadrao } from './index';
-import { userType } from "../types/userType";
 import { deliveryType } from "../types/deliveryType";
+
+
+export type stopType = "START" | "CHECKPOINT1" | "CHECKPOINT2" | "END";
 
 export const getAllDeliveries = async () => {
     try {
@@ -33,7 +35,7 @@ export const createDelivery = async (delivery: deliveryType, role: string) => {
     }
 }
 
-export const updateCurrentStop = async (id: string | number, stop: string, role: string) => {
+export const updateCurrentStop = async (id: string | number, stop: stopType, role: string) => {
     try {
         const response = await axios.put(`${urlpadrao}/delivery/current-stop/${id}`, { stop, role });
         return response.data;
@@ -73,9 +75,9 @@ export const getDeliveryByDeliveryPersonId = async (id: string) => {
     }
 }
 
-export const deleteDelivery = async (id: string | number, user: userType) => {
+export const deleteDelivery = async (id: string | number, role: "ADMIN" | "USER") => {
     try {
-        const response = await axios.delete(`${urlpadrao}/delivery/${id}`, { data: { user } });
+        const response = await axios.post(`${urlpadrao}/delivery/delete/${id}`, { role });
         return response.data;
     } catch (error) {
         console.error("Error deleting delivery:", error);

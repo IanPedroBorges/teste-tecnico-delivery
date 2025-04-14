@@ -6,9 +6,23 @@ export default class deliveryModel {
     private prisma = prisma;
 
     public async getAllDelivery(): Promise<Delivery[]> {
-        const delivery = await this.prisma.delivery.findMany();
+        const delivery = await this.prisma.delivery.findMany({
+          include: {
+            user: {
+              select: {
+                name: true,
+              },
+            },
+            deliveryPerson: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        });
+      
         return delivery;
-    }
+      }
 
     public async getDeliveryById(id: number): Promise<Delivery | null> {
         const delivery = await this.prisma.delivery.findUnique({
@@ -57,6 +71,13 @@ export default class deliveryModel {
         const delivery = await this.prisma.delivery.update({
             where: { id },
             data: { status },
+        });
+        return delivery;
+    }
+
+    public async deleteDelivery(id: number): Promise<Delivery> {
+        const delivery = await this.prisma.delivery.delete({
+            where: { id },
         });
         return delivery;
     }

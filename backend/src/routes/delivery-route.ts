@@ -94,4 +94,15 @@ router.get(
     }
 );
 
+router.post(
+    '/delete/:id',
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+        await deliveryRouteController.deleteDelivery(req, res);
+        } catch (error) {
+        next(error);
+        }
+    }
+);
+
 export default router;

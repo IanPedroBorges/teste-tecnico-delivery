@@ -51,7 +51,12 @@ export default function Login() {
 			const user = await loginUser(
                 inputsLogin.email,
                 inputsLogin.password)
-			setUser(user);
+			setUser({
+				id: user.id,
+				email: user.email,
+				role: user.role,
+				name: user.name,
+			});
 			navigate('/home');
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {

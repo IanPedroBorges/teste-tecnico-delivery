@@ -22,11 +22,12 @@ export default class DeliveryPersonController {
 
     public async createDeliveryPerson(req: Request, res: Response): Promise<Response> {
         const { role } = req.body;
+        const { date } = req.body;
         if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }
 
-        const { data, status }= await this.deliveryPersonServices.createDeliveryPerson(req.body);
+        const { data, status }= await this.deliveryPersonServices.createDeliveryPerson(date);
 
         return res.status(httpStatus(status)).json(data);
     }
@@ -46,7 +47,7 @@ export default class DeliveryPersonController {
     };
 
     public async deleteDeliveryPerson(req: Request, res: Response): Promise<Response> {
-        const { role } = req.body;
+        const { role } = req.body.user;
         if (role !== 'ADMIN') {
             return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
         }

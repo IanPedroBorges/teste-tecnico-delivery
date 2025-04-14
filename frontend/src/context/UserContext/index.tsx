@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { userContext } from './UserContext';
-import { UserReturn } from '../../types/context/loginContextTypes';
+import { UserReturn } from '../../types/context/loginContext';
+
 
 export default function LocalStorageProvider({
 	children,

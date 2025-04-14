@@ -72,4 +72,18 @@ export default class DeliveryController {
         return res.status(httpStatus(responseStatus)).json(data);
     };
 
+    public async deleteDelivery(req: Request, res: Response): Promise<Response> {
+        console.log('deleteDelivery');
+        console.log(req.body);
+        console.log(req.params);
+        const { role } = req.body;
+        if (role !== 'ADMIN') {
+            return res.status(httpStatus("unauthorized")).json({ message: 'Only admins can access this route' });
+        }
+
+        const { id } = req.params;
+        const { data, status } = await this.deliveryServices.deleteDelivery(Number(id));
+        return res.status(httpStatus(status)).json(data);
+    };
+
 };

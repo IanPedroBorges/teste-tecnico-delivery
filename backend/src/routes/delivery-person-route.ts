@@ -49,8 +49,8 @@ router.put(
     }
 );
 
-router.delete(
-    '/:id',
+router.post(
+    '/delete/:id',
     async (req: Request, res: Response, next: NextFunction) => {
         try {
         await deliveryPersonController.deleteDeliveryPerson(req, res);

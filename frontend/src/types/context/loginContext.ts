@@ -1,9 +1,10 @@
 import { LoginType } from '../loginType';
 
 export type UserReturn = {
+    id: string;
     email: string;
-    role: string;
-    username: string;
+    role: 'ADMIN' | 'USER';
+    name: string;
 }
 
 export type LocalStorageType = {

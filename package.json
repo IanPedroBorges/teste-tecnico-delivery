@@ -4,10 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install:all": "pnpm install && npm run start:all",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    
+    "backend:setup": "cd backend && pnpm install && pnpm prisma migrate deploy --preview-feature && pnpm prisma generate && pnpm run dev",
+    
+    "backend:reset": "cd backend && pnpm install && pnpm prisma migrate reset --force --preview-feature && pnpm prisma generate && pnpm prisma db seed && pnpm run dev",
+    
+    "frontend:setup": "cd frontend && npm install && npm run dev",
+    
+    "start:all": "concurrently \"npm run docker:up\" \"npm run backend:setup\" \"npm run frontend:setup\"",
+    
+    "reset:all": "concurrently \"npm run docker:up\" \"npm run backend:reset\" \"npm run frontend:setup\"",
+    
+    "down:all": "npm run docker:down"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.0"
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }

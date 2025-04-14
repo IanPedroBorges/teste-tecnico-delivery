@@ -1,6 +1,7 @@
 import axios from "axios";
 import { urlpadrao } from './index';
 import { userType } from "../types/userType";
+import { UserReturn } from "../types/context/loginContext";
 
 export const getAllDeliveryPersons = async () => {
     try {
@@ -22,9 +23,10 @@ export const getDeliveryPersonById = async (id: string) => {
     }
 }
 
-export const createDeliveryPerson = async (name: string, vehicle: string, isBusy: boolean) => {
+export const createDeliveryPerson = async (name: string, vehicle: string, isBusy: boolean, role: 'ADMIN' | "USER") => {
     try {
-        const response = await axios.post(`${urlpadrao}/delivery-person`, { name, vehicle, isBusy });
+        const date = {name, vehicle, isBusy};
+        const response = await axios.post(`${urlpadrao}/delivery-person`, { date, role });
         return response.data;
     } catch (error) {
         console.error("Error creating delivery person:", error);
@@ -42,9 +44,9 @@ export const updateDeliveryPerson = async (id: string | number, user: userType) 
     }
 }
 
-export const deleteDeliveryPerson = async (id: string | number, user: userType) => {
+export const deleteDeliveryPerson = async (id: string | number, user: UserReturn) => {
     try {
-        const response = await axios.delete(`${urlpadrao}/delivery-person/${id}`, { data: { user } });
+        const response = await axios.post(`${urlpadrao}/delivery-person/delete/${id}`, { user });
         return response.data;
     } catch (error) {
         console.error("Error deleting delivery person:", error);

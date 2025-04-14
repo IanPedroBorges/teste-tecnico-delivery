@@ -57,22 +57,19 @@ model DeliveryPerson {
 
 model Delivery {
   id                 Int              @id @default(autoincrement())
-  
-  // Armazenando cada ponto como uma string "latitude,longitude"
-  startPoint         String
+  startPoint         String                  // "latitude,longitude"
   checkpoint1        String
   checkpoint2        String
   endPoint           String
-
-  status             DeliveryStatus   @default(PENDING)
-  currentStop        DeliveryStop     @default(START)
-
+  status             DeliveryStatus          @default(PENDING)
+  currentStop        DeliveryStop            @default(START)
+  
   // Relacionamento com User: o usuário para quem a entrega é realizada
-  user               User             @relation(fields: [userId], references: [id])
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId             Int
 
   // Relacionamento com DeliveryPerson: o entregador responsável pela entrega
-  deliveryPerson     DeliveryPerson   @relation(fields: [deliveryPersonId], references: [id])
+  deliveryPerson     DeliveryPerson   @relation(fields: [deliveryPersonId], references: [id], onDelete: Cascade)
   deliveryPersonId   Int
 
   createdAt          DateTime         @default(now())

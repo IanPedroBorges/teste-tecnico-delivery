@@ -22,12 +22,22 @@ export const register = async (user: userType ) => {
     }
 }
 
-export const getAllUsers = async () => {
+export const getAllUsers = async (role: 'ADMIN' | 'USER') => {
     try {
-        const response = await axios.get(`${urlpadrao}/users`);
+        const response = await axios.post(`${urlpadrao}/users/users`, { role });
         return response.data;
     } catch (error) {
         console.error("Error fetching users:", error);
+        throw error;
+    }
+}
+
+export const deleteUser = async (id: string, role: "ADMIN" | "USER") => {
+    try {
+        const response = await axios.delete(`${urlpadrao}/users/${id}`, { data: { role } });
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting user:", error);
         throw error;
     }
 }

@@ -40,8 +40,12 @@ export default function Register() {
                 password: inputsRegister.password,
                 role: 'USER',
             })
-            console.log(user);
-			setUser(user);
+			setUser({
+				id: user.id,
+				email: user.email,
+				role: user.role,
+				name: user.name,
+			});
 			navigate('/home');
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {

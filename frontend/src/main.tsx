@@ -4,6 +4,7 @@ import './index.css';
 
 import LocalStorageProvider from './context/LocalStorageContext/index.tsx';
 import UserContext from './context/UserContext';
+import 'leaflet/dist/leaflet.css'; 
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
