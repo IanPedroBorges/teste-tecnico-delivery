@@ -50,7 +50,7 @@
     ```
 
   
- ### ▶️ Passos para rodar o projeto
+  ### ▶️ Passos para rodar o projeto
 
   1. **Clone o repositório:**
 
