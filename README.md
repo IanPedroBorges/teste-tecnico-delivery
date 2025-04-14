@@ -56,6 +56,7 @@
   ```bash
   pnpm install
   pnpm run start:all
+  ```
 </details> <details> <summary>🛠 Tecnologias Utilizadas</summary> <p> Aqui estão as principais tecnologias que utilizei no projeto, junto com o motivo de cada escolha 👇 </p>
 Node.js 🟢
 Usei Node.js no backend pela familiaridade com JavaScript e por ser uma ótima escolha para APIs REST com alto desempenho e boa integração com bancos SQL e bibliotecas modernas.
@@ -78,4 +79,4 @@ Foi minha primeira vez usando o PNPM e gostei bastante! Achei o gerenciamento de
 Concurrently ⏯️
 Usei o concurrently para rodar o backend, frontend e Docker em paralelo com um único comando. Isso facilitou bastante o processo de desenvolvimento e testagem local.
 
-</details> ```
+</details>
